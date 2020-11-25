@@ -83,7 +83,7 @@ def CreateBSLpackage(workSpaceEnv = None, GDBfolder_name    = r"AutomationGDB.gd
 	
 	return 
 
-def publishBSLfunction(itemID_BSLp = None, itemID_Hosted=None, dictOfPackageLayer = {}, DirectoryTo_SLPK = None, BSL_name="Name Not provided" ):
+def publishBSLfunction(itemID_BSLp = None, itemID_Hosted=None, dictOfPackageLayer = {}, DirectoryTo_SLPK = None ):
 
 	""" in this part of the code we will be accessing Web GIS and publish it into ArcGIS Online"""
 
@@ -107,7 +107,6 @@ def publishBSLfunction(itemID_BSLp = None, itemID_Hosted=None, dictOfPackageLaye
 	else:
 		itemHosted  = gis.content.get(itemID_Hosted) 
 		itemHosted  = [itemHosted]
-	print (itemHosted, itemPackage)
 
 	if len(itemHosted) > 0:
 		for itemL in itemHosted:
@@ -130,7 +129,6 @@ def publishBSLfunction(itemID_BSLp = None, itemID_Hosted=None, dictOfPackageLaye
 		try:
 			print ("Publishing the updated BSL package.....")
 			slpk_published = slpk_item.publish()
-			print (itemHosted["id"], slpk_published["id"])
 			checker = False
 			try:
 				checker = arcpy.server.ReplaceWebLayer(itemHosted["id"], "Archive_" + itemHosted ["title"] + day , slpk_published["id"], "KEEP", "TRUE")
@@ -211,21 +209,22 @@ if __name__ == '__main__':
 	"""
 	# Required
 	##########
-	itemID_BSLp  = "4e27fbe2f642458b8108c41881e4bc9f" #"feaa22628f164732a2f7129214f395a2"
-	itemID_Hosted= "0af1fd92f95d46768a72b59845175bae"
+	itemID_BSLp             = "4e27fbe2f642458b8108c41881e4bc9f" 
+	itemID_Hosted           = "0af1fd92f95d46768a72b59845175bae"
 	# overwrite parameter is importatnt to be set on **True** ##Only change if you know what you are doing##  
-	dictOfPackageLayer      = {"overwrite" : True, "tags" : ["ArcGIS", "BuildingSceneLayer", "revit"],\
-					"snippet": "This is a Scene Package Created for testing the Automation process of uploading revit data"}
-
+	dictOfPackageLayer      = {"overwrite" : True }
+	DirectoryTo_SLPK        = None
 	#### this parameter is automaticlly derived from the arguments of function 1 
 	#### do not change it unless you know what you are doing
 	if includeDate:
 		now = datetime.now()
 		day = now.strftime("%Y%m%d")
-		BSL_name = BSL_name[:-5] +day + BSL_name[-5:]  
-	DirectoryTo_SLPK    = workSpaceEnv + "\\" + BSL_name
+		BSL_name = BSL_name[:-5] +day + BSL_name[-5:] 
+	if  DirectoryTo_SLPK is None:
+		DirectoryTo_SLPK  = workSpaceEnv + "\\" + BSL_name
+
 	if run_publishBSLfunction:
-		publishBSLfunction(itemID_BSLp, itemID_Hosted, dictOfPackageLayer, DirectoryTo_SLPK, BSL_name)
+		publishBSLfunction(itemID_BSLp, itemID_Hosted, dictOfPackageLayer, DirectoryTo_SLPK)
 
 
 	# Helper function 
