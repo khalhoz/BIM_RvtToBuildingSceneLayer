@@ -1,5 +1,6 @@
 # RvtToBuildingScnenLayer - Automation
 This script can be to run to execute the workflow of converting a Revit Building model into Building Scene Layer package then upload it into ArcGIS online server as Scene Layer (Hosted) <br/>
+The repository contains this file and a Python file named **BIMpublication** and a (.bat) file named **runPythonScript**
 <br/>
 **workflow:**
 * Creating geodatabase folder in your local machine
