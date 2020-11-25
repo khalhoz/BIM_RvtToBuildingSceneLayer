@@ -1,10 +1,19 @@
-# RvtToBuildingScnenLayer
+# RvtToBuildingScnenLayer - Automation
 This script can be to run to execute the workflow of converting a Revit Building model into Building Scene Layer package then upload it into ArcGIS online server as Scene Layer (Hosted) <br/>
 <br/>
 **workflow:**
-* Importing Revit data into geodatabase
-* If desired make some changes
+* Creating geodatabase folder in your local machine
+* Importing Revit data into the geodatabase created
+* If desired making some changes
 * Making Building Layer
 * Creating Building Scene Layer Package (.slpk)
-* Uploading the created (.slpk) file into ArcGIS online
-* Finally, Publishing (or replacing) it as Scene Layer (Hosted) 
+* Uploading (or updating) the created Building Scene Layer Package (.slpk file) into ArcGIS Online
+* Finally, publishing (or replacing) it as Scene Layer (Hosted) 
+
+**Parameterization**
+1. Function 1 parameters:
+* workSpaceEnv      = r"C:\user\AutoFolder"   #path to a folder in which a .gdb is created
+* Rvt_directory     = r"C:\Users\Berging.rvt" #path to rvt file 
+* BSL_name          = r"BSLpackageTest.slpk"  #defaul is BSLpackage.slpk
+* spatial_reference = r"RD New"               #default is "RD New"
+* nameOfBuildingL   = r"BuildL_A"             #this name will show on the ArcGIS online 
