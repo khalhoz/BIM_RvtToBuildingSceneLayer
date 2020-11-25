@@ -118,7 +118,7 @@ def publishBSLfunction(itemID_BSLp = None, itemID_Hosted=None, dictOfPackageLaye
 		print ("Working on the following Layers \n1 - {} \n2 - {}".format(itemPackage, itemHosted ))
 
 		print ("Updating BSL Package....")
-		slpk_item = gis.content.add(item_properties= dictOfPackageLayer, data= DirectoryTo_SLPK, folder='packages')
+		slpk_item = gis.content.add(item_properties= dictOfPackageLayer, data= DirectoryTo_SLPK)
 
 		# get a string of todays data
 		now = datetime.now()
@@ -128,23 +128,21 @@ def publishBSLfunction(itemID_BSLp = None, itemID_Hosted=None, dictOfPackageLaye
 
 		try:
 			print ("Publishing the updated BSL package.....")
-			slpk_published = slpk_item.publish()
 			checker = False
+			slpk_published = slpk_item.publish()
 			try:
 				checker = arcpy.server.ReplaceWebLayer(itemHosted["id"], "Archive_" + itemHosted ["title"] + day , slpk_published["id"], "KEEP", "TRUE")
 			except:
-				print ()
 				print ("Replacement didn't work, trying with different Name")
 			if not checker:
 				try:
 					checker = arcpy.server.ReplaceWebLayer(itemHosted["id"], "Archive_" + itemHosted ["title"] + day + "__2", slpk_published["id"], "KEEP", "TRUE")
 					print ("Hosted Layer Scuccesfully replaced")
 				except:
-					print ("Replacement didn't work")
-			if not checker:
-				slpk_published.delete()
-
+					print ("Replacement didn't work, this layer has already been replaced twice today")
+					slpk_published.delete()
 		except:
+			slpk_published.delete()
 			print ("(error): \nTry to delete the following layer {} of Type \"Hosted Service\" ".format(slpk_item["title"]))
 			print ("Or run publishBSLfunction () separetely")
 		slpk_item.update(item_properties= {"title": slpk_item["title"][:-len(day)]})
@@ -157,19 +155,34 @@ def publishBSLfunction(itemID_BSLp = None, itemID_Hosted=None, dictOfPackageLaye
 		print ("Publishing the updated BSL package.....")
 		slpk_published = slpk_item.publish()
 		print (r"work done")
-		
-	
 
-# Helper Function to remove gdb folder when wished 
-def removeDirectory(PathToFolder):
-		return shutil.rmtree(PathToFolder)
+def checkDateFunction(Rvt_directory="",directoryToTXTfile=""):
+	checkTime = os.path.getmtime(Rvt_directory)
+	with  open(r"C:\Users\alhoz\Desktop\Automation\FinalPythonCodes\TimesLog.txt", "r+") as f:
+		lines = f.read().splitlines()
+		if len(lines)==0:
+			print ("yahooo", lines)
+			f.write(str(checkTime))
+			return True
+		else:
+			compareWith = lines[-1]
+			if float (compareWith) ==checkTime:
+				return False
+			else:
+				f.write("\n{}".format(str(checkTime)) )
+				return True
 
 if __name__ == '__main__':
 
 	run_CreateBSLpackage  = True
-	run_publishBSLfunction= True
-	deleteDirectory       = False # only works if you run the second function seperately 
+	run_publishBSLfunction= False
+	checkDateOfRevitFile  = True # only works if you add (TimesLog.txt) and the directory to it
 	
+	###########################################################################################################
+	#directry to the text file in which the histoy log is stored and used for the date check of revit files####
+	## see helper function:)
+	directoryToTXTfile    = r"C:\Users\alhoz\Desktop\Automation\FinalPythonCodes\TimesLog.txt" 
+
 	"""required parameters and Optional parameters for the workflow
 	this workflow is devided into two main parts (here functions)
 
@@ -192,13 +205,14 @@ if __name__ == '__main__':
 	GDBfolder_name    = r"AutomationTESTnew.gdb" #default
 	includeDate       = False 
 	####################################
-	# run the Function :CreateBSLpackage
+	# check date if True and run the Function :CreateBSLpackage
+	if checkDateOfRevitFile and run_CreateBSLpackage:
+		run_CreateBSLpackage = checkDateFunction(Rvt_directory,directoryToTXTfile)
+	print (run_CreateBSLpackage)
 	if run_CreateBSLpackage:
 		CreateBSLpackage(workSpaceEnv, GDBfolder_name       , \
 			       out_FeatureDataset, spatial_reference    , Rvt_directory, BSL_name,\
 				   nameOfBuildingL   , includeDate )
-
-
 
 	#####################################################################
 	#####################################################################
@@ -212,7 +226,7 @@ if __name__ == '__main__':
 	itemID_BSLp             = "4e27fbe2f642458b8108c41881e4bc9f" 
 	itemID_Hosted           = "0af1fd92f95d46768a72b59845175bae"
 	# overwrite parameter is importatnt to be set on **True** ##Only change if you know what you are doing##  
-	dictOfPackageLayer      = {"overwrite" : True }
+	dictOfPackageLayer      = {"overwrite" : True}
 	DirectoryTo_SLPK        = None
 	#### this parameter is automaticlly derived from the arguments of function 1 
 	#### do not change it unless you know what you are doing
@@ -225,14 +239,3 @@ if __name__ == '__main__':
 
 	if run_publishBSLfunction:
 		publishBSLfunction(itemID_BSLp, itemID_Hosted, dictOfPackageLayer, DirectoryTo_SLPK)
-
-
-	# Helper function 
-	out_gdb_path    = workSpaceEnv + "\\" + GDBfolder_name
-	if deleteDirectory:
-		try:
-			print ("removing gdb files")
-			removeDirectory(out_gdb_path)
-			print ("The folowing gdb file is removed{}".format(out_gdb_path, format_spec))
-		except:
-			print ("Failed Deleting GDB Folder")
