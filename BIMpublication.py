@@ -81,7 +81,7 @@ def CreateBSLpackage(workSpaceEnv = None, GDBfolder_name    = r"AutomationGDB.gd
 	slpk = arcpy.CreateBuildingSceneLayerPackage_management(nameOfBuildingL, BSL_name, spatial_reference)
 	print ("Finsihed creating the following Building Scene Layer package {}".format(slpk))
 	
-	return 
+	return slpk
 
 def publishBSLfunction(itemID_BSLp = None, itemID_Hosted=None, dictOfPackageLayer = {}, DirectoryTo_SLPK = None ):
 
@@ -119,13 +119,14 @@ def publishBSLfunction(itemID_BSLp = None, itemID_Hosted=None, dictOfPackageLaye
 
 		print ("Updating BSL Package....")
 		slpk_item = gis.content.add(item_properties= dictOfPackageLayer, data= DirectoryTo_SLPK)
-
+		print (slpk_item,slpk_item["title"], slpk_item["id"] )
+		# print (stop)
 		# get a string of todays data
 		now = datetime.now()
 		day = now.strftime("%Y%m%d")
 		# Update the name with the date of today
 		slpk_item.update(item_properties= {"title": slpk_item["title"] + day})
-
+		slpk_published = None
 		try:
 			print ("Publishing the updated BSL package.....")
 			checker = False
@@ -142,7 +143,8 @@ def publishBSLfunction(itemID_BSLp = None, itemID_Hosted=None, dictOfPackageLaye
 					print ("Replacement didn't work, this layer has already been replaced twice today")
 					slpk_published.delete()
 		except:
-			slpk_published.delete()
+			if slpk_published is not None:
+				slpk_published.delete()
 			print ("(error): \nTry to delete the following layer {} of Type \"Hosted Service\" ".format(slpk_item["title"]))
 			print ("Or run publishBSLfunction () separetely")
 		slpk_item.update(item_properties= {"title": slpk_item["title"][:-len(day)]})
@@ -158,10 +160,9 @@ def publishBSLfunction(itemID_BSLp = None, itemID_Hosted=None, dictOfPackageLaye
 
 def checkDateFunction(Rvt_directory="",directoryToTXTfile=""):
 	checkTime = os.path.getmtime(Rvt_directory)
-	with  open(r"C:\Users\alhoz\Desktop\Automation\FinalPythonCodes\TimesLog.txt", "r+") as f:
+	with  open(directoryToTXTfile, "r+") as f:
 		lines = f.read().splitlines()
 		if len(lines)==0:
-			print ("yahooo", lines)
 			f.write(str(checkTime))
 			return True
 		else:
@@ -175,8 +176,8 @@ def checkDateFunction(Rvt_directory="",directoryToTXTfile=""):
 if __name__ == '__main__':
 
 	run_CreateBSLpackage  = True
-	run_publishBSLfunction= False
-	checkDateOfRevitFile  = True # only works if you add (TimesLog.txt) and the directory to it
+	run_publishBSLfunction= True
+	checkDateOfRevitFile  = True # only works if you add (TimesLog.txt) file and the directory to it
 	
 	###########################################################################################################
 	#directry to the text file in which the histoy log is stored and used for the date check of revit files####
@@ -208,7 +209,9 @@ if __name__ == '__main__':
 	# check date if True and run the Function :CreateBSLpackage
 	if checkDateOfRevitFile and run_CreateBSLpackage:
 		run_CreateBSLpackage = checkDateFunction(Rvt_directory,directoryToTXTfile)
-	print (run_CreateBSLpackage)
+		if not run_CreateBSLpackage:
+			run_publishBSLfunction = False
+			print ("The last version of the Revit file is already uploaded")
 	if run_CreateBSLpackage:
 		CreateBSLpackage(workSpaceEnv, GDBfolder_name       , \
 			       out_FeatureDataset, spatial_reference    , Rvt_directory, BSL_name,\
@@ -223,7 +226,7 @@ if __name__ == '__main__':
 	"""
 	# Required
 	##########
-	itemID_BSLp             = "4e27fbe2f642458b8108c41881e4bc9f" 
+	itemID_BSLp             = "a3826c603e0d4f7d8c2a79ea35a88465" 
 	itemID_Hosted           = "0af1fd92f95d46768a72b59845175bae"
 	# overwrite parameter is importatnt to be set on **True** ##Only change if you know what you are doing##  
 	dictOfPackageLayer      = {"overwrite" : True}
