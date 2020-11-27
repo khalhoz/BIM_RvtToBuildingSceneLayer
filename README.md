@@ -7,6 +7,7 @@ The repository contains the following
 4. A txt file named **TimesLog.txt** #this file is used for the helper function **checkDateFunction()**
 <br/>
 **workflow:**
+<br/>
 * Check if a revit file is last modifed #optional: using helper function
 * Creating geodatabase folder in your local machine
 * Importing Revit data into the geodatabase created
