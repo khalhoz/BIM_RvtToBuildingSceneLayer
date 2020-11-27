@@ -8,14 +8,14 @@ The repository contains the following
 <br/>
 **workflow:**
 <br/>
-*Check if a revit file is last modifed #optional: using helper function
-* Creating geodatabase folder in your local machine
-* Importing Revit data into the geodatabase created
-* If desired making some changes
-* Making Building Layer
-* Creating Building Scene Layer Package (.slpk)
-* Uploading (or updating) the created Building Scene Layer Package (.slpk file) into ArcGIS Online
-* Finally, publishing (or replacing) it as Scene Layer (Hosted) 
++ Check if a revit file is last modifed #optional: using helper function
++ Creating geodatabase folder in your local machine
++ Importing Revit data into the geodatabase created
++ If desired making some changes
++ Making Building Layer
++ Creating Building Scene Layer Package (.slpk)
++ Uploading (or updating) the created Building Scene Layer Package (.slpk file) into ArcGIS Online
++ Finally, publishing (or replacing) it as Scene Layer (Hosted) 
 
 **Parameterization**
 + Function 1 **"def CreateBSLpackage()"** arguments:
