@@ -8,7 +8,7 @@ The repository contains the following
 <br/>
 **workflow:**
 <br/>
-* Check if a revit file is last modifed #optional: using helper function
+*Check if a revit file is last modifed #optional: using helper function
 * Creating geodatabase folder in your local machine
 * Importing Revit data into the geodatabase created
 * If desired making some changes
