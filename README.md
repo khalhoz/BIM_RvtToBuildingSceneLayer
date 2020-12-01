@@ -8,7 +8,7 @@ This script can be used to execute the workflow of converting a Revit building m
 <br/>
 
 **workflow:**
-+ Check if a revit file is last modifed #optional: using helper function
++ Check if a revit file has been modifed since the last run #optional: using helper function
 + Creating geodatabase folder in your local machine
 + Importing Revit data into the geodatabase created
 + If desired making some changes
