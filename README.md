@@ -1,15 +1,21 @@
 # RvtToBuildingScnenLayer - Automation
-This script can be to run to execute the workflow of converting a Revit Building model into Building Scene Layer package then upload it into ArcGIS online server as Scene Layer (Hosted) <br/>
-The repository contains this file and a Python file named **BIMpublication** and a (.bat) file named **runPythonScript**
+This script can be used to execute the workflow of converting a Revit building model into Building Scene Layer package then upload it into ArcGIS Online server as Scene Layer (Hosted) <br/>
+### The repository contains the following 
+1. This file **README.md**
+2. A Python file named **BIMpublication** 
+3. A (.bat) file named **runPythonScript** # this can be used for automating using [Task Scheduler](https://datatofish.com/python-script-windows-scheduler/)
+4. A txt file named **TimesLog.txt** #this file is used for the helper function **checkDateFunction()**
 <br/>
+
 **workflow:**
-* Creating geodatabase folder in your local machine
-* Importing Revit data into the geodatabase created
-* If desired making some changes
-* Making Building Layer
-* Creating Building Scene Layer Package (.slpk)
-* Uploading (or updating) the created Building Scene Layer Package (.slpk file) into ArcGIS Online
-* Finally, publishing (or replacing) it as Scene Layer (Hosted) 
++ Check if a revit file is last modifed #optional: using helper function
++ Creating geodatabase folder in your local machine
++ Importing Revit data into the geodatabase created
++ If desired making some changes
++ Making Building Layer
++ Creating Building Scene Layer Package (.slpk)
++ Uploading (or updating) the created Building Scene Layer Package (.slpk file) into ArcGIS Online
++ Finally, publishing (or replacing) it as Scene Layer (Hosted) 
 
 **Parameterization**
 + Function 1 **"def CreateBSLpackage()"** arguments:
