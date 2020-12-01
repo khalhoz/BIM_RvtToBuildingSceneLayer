@@ -22,7 +22,7 @@ This script can be used to execute the workflow of converting a Revit building m
 > Required 
   1. workSpaceEnv      = r"C:\user\AutoFolder"   #path to a folder in which a .gdb file is created
   2. Rvt_directory     = r"C:\Users\Berging.rvt" #path to rvt file 
-  3. BSL_name          = r"BSLpackageTest.slpk"  #defaul is BSLpackage.slpk
+  3. BSL_name          = r"BSLpackage.slpk"  #defaul is BSLpackage.slpk
   4. spatial_reference = r"RD New"               #default is "RD New"
   5. nameOfBuildingL   = r"BuildL_A"             #this name will show on the ArcGIS online 
 > Optional
