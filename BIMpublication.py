@@ -94,8 +94,7 @@ def publishBSLfunction(itemID_BSLp = None, itemID_Hosted=None, dictOfPackageLaye
 	if itemID_BSLp is None:
 		print ("There is no itemID of type:Scene Package provided")
 		print ("Uploading BSL Package....")
-		slpk_item = gis.content.add(item_properties = dictOfPackageLayer, data= DirectoryTo_SLPK,\
-		 folder='packages')
+		slpk_item = gis.content.add(item_properties = dictOfPackageLayer, data= DirectoryTo_SLPK)
 		print ("Publishing the updloaded BSL package.....")
 		slpk_published = slpk_item.publish()
 		print (r"work done")
@@ -152,8 +151,7 @@ def publishBSLfunction(itemID_BSLp = None, itemID_Hosted=None, dictOfPackageLaye
 
 	else:
 		print ("Updating BSL Package....")
-		slpk_item = gis.content.add(item_properties = dictOfPackageLayer, data= DirectoryTo_SLPK,\
-		 folder='packages')
+		slpk_item = gis.content.add(item_properties = dictOfPackageLayer, data= DirectoryTo_SLPK)
 		print ("Publishing the updated BSL package.....")
 		slpk_published = slpk_item.publish()
 		print (r"work done")
