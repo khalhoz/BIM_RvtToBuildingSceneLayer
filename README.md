@@ -7,7 +7,7 @@ This script can be used to execute the workflow of converting a Revit building m
 4. A txt file named **TimesLog.txt** #this file is used for the helper function **checkDateFunction()**
 <br/>
 
-**workflow:**
+### **workflow:**
 + Check if a revit file has been modifed since the last run #optional: using helper function
 + Creating geodatabase folder in your local machine
 + Importing Revit data into the geodatabase created
@@ -17,8 +17,8 @@ This script can be used to execute the workflow of converting a Revit building m
 + Uploading (or updating) the created Building Scene Layer Package (.slpk file) into ArcGIS Online
 + Finally, publishing (or replacing) it as Scene Layer (Hosted) 
 
-**Parameterization**
-+ Function 1 **"def CreateBSLpackage()"** arguments:
+### **Parameterization**
+#### + Function 1 **"def CreateBSLpackage()"** arguments:
 > Required 
   1. workSpaceEnv      = r"C:\user\AutoFolder"   #path to a folder in which a .gdb file is created
   2. Rvt_directory     = r"C:\Users\Berging.rvt" #path to rvt file 
@@ -28,7 +28,7 @@ This script can be used to execute the workflow of converting a Revit building m
 > Optional
   6. out_FeatureDataset= r"Building_A"           #default "Building_A"
   7. includeDate       = False                   #Include date of the day in the returned slpk file e.g. (name20202112.slpk)
-+ Function 2 **"def publishBSLfunction()"** arguments:
+#### + Function 2 **"def publishBSLfunction()"** arguments:
 > Required
   1. DirectoryTo_SLPK = None                    # if not provided the script will try derive it from the arguments of function 1 (if provided)
   2. itemID_BSLp  = "itemID"                    # if not provided the program will simply upload the Building Scene Layer Package provided 
