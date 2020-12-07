@@ -1,5 +1,5 @@
 # RvtToBuildingScnenLayer - Automation
-This script can be used to execute the workflow of converting a Revit building model into Building Scene Layer package then upload it into ArcGIS Online server and publish it as Scene Layer (Hosted) <br/>
+This script can be used to execute the workflow - **converting a Revit building model into Building Scene Layer package then upload it into ArcGIS Online server and publish it as Scene Layer (Hosted)** <br/>
 This code is meant to be a starting work-frame from which you can develop your pipeline in similar or related workflows. 
 It still can be used to execute the exact workflow mentioned, however for it to run you need to be automatically logged in in ArcGIS Pro. Otherwise, you should adjust the code in the Authentication part to grant access to ArcGIS Online content. For more information about the workflow and the code, refer to this [Story Map](https://storymaps.arcgis.com/stories/3c2c29a8ff544db5a6df94d936430bd6).
 <br/>
