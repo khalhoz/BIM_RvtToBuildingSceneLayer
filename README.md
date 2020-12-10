@@ -9,12 +9,12 @@ Moreover, the repository contains a Python script toolbox (geoprocessing toolbox
 1. This file **README.md**
 2. LICENCE
     #### Files for automating a standalone script
-3. A Python file named `BIMpublication` 
+3. A Python file named `BIMpublication` # this is the main Python Script that can be used direcly or modified to fit your workflow
 4. A (.bat) file named `runPythonScript` #this can be used for automating using [Task Scheduler](https://datatofish.com/python-script-windows-scheduler/)
 5. A txt file named `TimesLog.txt`#this file is used for the helper function **checkDateFunction()**
     #### Files for automating in ArcGIS Pro
-6. A toolbox named `BIMpublicationToolbox` #this toolbox can be used directly in ArcGIS Pro and it runs the exact workflow mentioned above 
-7. A Python file named `BIMpublicationScriptToolVerssion` #this script can be used to develop the Geoprocessing tool  
+6. A toolbox named `BIMpublicationToolbox` #this toolbox (the script is embedded) can be used directly in ArcGIS Pro and it runs the exact workflow mentioned above. 
+7. A Python file named `BIMpublicationScriptToolVerssion` #this script is a copy of BIMpublication.py, however it is adjusted to be read by the toolbox. This file can be used to develop the Geoprocessing tool to fit your workflow if you wish to.
 
 ### **workflow:**
 + Check if a revit file has been modifed since the last run #optional: using helper function
