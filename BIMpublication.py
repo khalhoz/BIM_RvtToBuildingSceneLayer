@@ -2,7 +2,8 @@
 #this script can be used to automate the forkflow: from .rvt file to building scene layer package
 #using arcgis.gis and arcpy pachages and tools.  
 #author     : Khaled Alhoz
-#supervisor : Niels van der Vaart 
+#supervisor : Niels van der Vaart
+#date 					: 15-Nov-2020	 
 ##################################################################################################
 
 # **importing required Modules**
@@ -180,7 +181,7 @@ if __name__ == '__main__':
 	###########################################################################################################
 	#directry to the text file in which the histoy log is stored and used for the date check of revit files####
 	## see helper function:)
-	directoryToTXTfile    = r"C:\Users\alhoz\Desktop\Automation\FinalPythonCodes\TimesLog.txt" 
+	directoryToTXTfile    = r"C:\Users\username\Desktop\Automation\FinalPythonCodes\TimesLog.txt" 
 
 	"""required parameters and Optional parameters for the workflow
 	this workflow is devided into two main parts (here functions)
@@ -192,16 +193,16 @@ if __name__ == '__main__':
 
 	# Required
 	########## 
-	workSpaceEnv      =  r"C:\Users\alhoz\Desktop\AutomationTest" # path to a folder to createGDB
-	Rvt_directory     =  r"C:\Users\alhoz\Desktop\AutomationTest\revitFiles\171025_BLOKA.rvt" # path to rvt file 
-	BSL_name          =  r"BSLpackageBlockNew.slpk" # BSLpackage Name defaul is **BSLpackage.slpk**
+	workSpaceEnv      =  r"C:\Users\username\Desktop\AutomationTest" # path to a folder to createGDB
+	Rvt_directory     =  r"C:\Users\username\Desktop\AutomationTest\revitFiles\171025_BLOKA.rvt" # path to rvt file 
+	BSL_name          =  r"BSLpackage.slpk" # BSLpackage Name defaul is **BSLpackage.slpk**
 	spatial_reference =  r"RD New" #default is "RD New"
 	nameOfBuildingL   =  r"BuildL_Anew" #this will show on the ArcGIS online 
 	
 	# optional
 	########## 
 	out_FeatureDataset= r"Building_A"
-	GDBfolder_name    = r"AutomationTESTnew.gdb" #default
+	GDBfolder_name    = r"Automation.gdb" #default
 	includeDate       = False 
 	####################################
 	# check date if True and run the Function :CreateBSLpackage
@@ -224,8 +225,8 @@ if __name__ == '__main__':
 	"""
 	# Required
 	##########
-	itemID_BSLp             = "a3826c603e0d4f7d8c2a79ea35a88465" 
-	itemID_Hosted           = "0af1fd92f95d46768a72b59845175bae"
+	itemID_BSLp             = None 
+	itemID_Hosted           = None
 	# overwrite parameter is importatnt to be set on **True** ##Only change if you know what you are doing##  
 	dictOfPackageLayer      = {"overwrite" : True}
 	DirectoryTo_SLPK        = None
