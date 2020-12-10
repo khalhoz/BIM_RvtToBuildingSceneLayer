@@ -48,3 +48,36 @@ Moreover, the repository contains a Python script toolbox (geoprocessing toolbox
   **overwrite** parameter is importatnt to be set on **True** ##Only change if you know what you are doing; [here](https://developers.arcgis.com/python/api-reference/arcgis.gis.toc.html#arcgis.gis.ContentManager.add) you can find full explaination on the values that can be used##
   This dictionary can be used to update the Building Scene Layer Pckage/Scene Layer (Hosted) item_properties details/information such as title, tags etc. However, it is advised to use [**Update()**](https://developers.arcgis.com/python/api-reference/arcgis.gis.toc.html#arcgis.gis.ContentManager.add) method as it performs faster after publishing. 
 
+### example of using the function in Python
+
+```
+import BIMpublication
+
+# create building scene layer function
+# Required
+########## 
+workSpaceEnv      =  r"C:\Users\username\Desktop\AutomationTest" 
+Rvt_directory     =  r"C:\Users\username\Desktop\AutomationTest\revitFiles\171025_BLOKA.rvt" 
+BSL_name          =  r"BSLpackage.slpk" 
+spatial_reference =  r"RD New" 
+nameOfBuildingL   =  r"BuildL_Anew" #this name will show on the ArcGIS online
+# optional
+########## 
+out_FeatureDataset= r"Building_A"
+GDBfolder_name    = r"Automation.gdb" #default
+includeDate       = False 
+BIMpublication.CreateBSLpackage(workSpaceEnv, GDBfolder_name       , \
+			       out_FeatureDataset, spatial_reference    , Rvt_directory, BSL_name,\
+				   nameOfBuildingL   , includeDate )
+
+
+# Publish Building scene layer function
+# Required parameters 
+##########
+itemID_BSLp             = None 
+itemID_Hosted           = None
+# overwrite parameter is importatnt to be set on **True** ##Only change if you know what you are doing##  
+dictOfPackageLayer      = {"overwrite" : True}
+DirectoryTo_SLPK        = None
+BIMpublication.publishBSLfunction(itemID_BSLp, itemID_Hosted, dictOfPackageLayer, DirectoryTo_SLPK)
+```
