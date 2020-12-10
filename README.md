@@ -3,7 +3,7 @@ This script can be used to execute the workflow - **converting a Revit building 
 This code is meant to be a starting work-frame from which you can develop your pipeline in similar or related workflows. 
 It still can be used to execute the exact workflow mentioned, however for it to run you need to be automatically logged in in ArcGIS Pro. Otherwise, you should adjust the code in the Authentication part to grant access to ArcGIS Online content. For more information about the workflow and the code, refer to this [Story Map](https://storymaps.arcgis.com/stories/3c2c29a8ff544db5a6df94d936430bd6).
 <br/>
-Moreover, the repository contains a Python script toolbox (geoprocessing toolbox). This is created and derived using the same Python script and can be used directly in ArcGIS Pro to run the same worflow. For more details about thetool box, refer to the following [blog](https://community.esri.com/t5/arcgis-pro-blog/creating-geoprocessing-python-toolboxes-and-automating-your/ba-p/1007339)  
+Moreover, the repository contains a Python script toolbox (geoprocessing toolbox). This is created and derived using the same Python script and can be used directly in ArcGIS Pro to run the same worflow. For more details about the toolbox, refer to the following [blog](https://community.esri.com/t5/arcgis-pro-blog/creating-geoprocessing-python-toolboxes-and-automating-your/ba-p/1007339)  
 
 ### The repository contains the following 
 1. This file **README.md**
@@ -36,7 +36,8 @@ Moreover, the repository contains a Python script toolbox (geoprocessing toolbox
   5. nameOfBuildingL   = r"BuildL_A"             #this name will show on the ArcGIS online 
 > Optional
   6. out_FeatureDataset= r"Building_A"           #default "Building_A"
-  7. includeDate       = False                   #Include date of the day in the returned slpk file e.g. (name20202112.slpk)
+  7. includeDate       = False                   #Include date of the day in the returned slpk file e.g. (name20202112.slpk) <br/>
+  
 #### + Function 2 **`"def publishBSLfunction()"`** arguments:
 > Required
   1. DirectoryTo_SLPK = None                    # if not provided the script will try derive it from the arguments of function 1 (if provided)
