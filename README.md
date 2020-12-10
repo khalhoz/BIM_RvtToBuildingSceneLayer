@@ -9,12 +9,12 @@ Moreover, the repository contains a Python script toolbox (geoprocessing toolbox
 1. This file **README.md**
 2. LICENCE
     #### Files for automating a standalone script
-3. A Python file named `**BIMpublication**` 
-4. A (.bat) file named `**runPythonScript**` #this can be used for automating using [Task Scheduler](https://datatofish.com/python-script-windows-scheduler/)
-5. A txt file named `**TimesLog.txt**`#this file is used for the helper function **checkDateFunction()**
+3. A Python file named `BIMpublication` 
+4. A (.bat) file named `runPythonScript` #this can be used for automating using [Task Scheduler](https://datatofish.com/python-script-windows-scheduler/)
+5. A txt file named `TimesLog.txt`#this file is used for the helper function **checkDateFunction()**
     #### Files for automating in ArcGIS Pro
-6. A toolbox named **BIMpublicationToolbox** #this toolbox can be used directly in ArcGIS Pro and it runs the exact workflow mentioned above 
-7. A Python file named **BIMpublicationScriptToolVerssion** #this script can be used to develop the Geoprocessing tool  
+6. A toolbox named `BIMpublicationToolbox` #this toolbox can be used directly in ArcGIS Pro and it runs the exact workflow mentioned above 
+7. A Python file named `BIMpublicationScriptToolVerssion` #this script can be used to develop the Geoprocessing tool  
 
 ### **workflow:**
 + Check if a revit file has been modifed since the last run #optional: using helper function
@@ -27,7 +27,7 @@ Moreover, the repository contains a Python script toolbox (geoprocessing toolbox
 + Finally, publishing (or replacing) it as Scene Layer (Hosted) 
 
 ### **Parameterization**
-#### + Function 1 **"def CreateBSLpackage()"** arguments:
+#### + Function 1 **`"def CreateBSLpackage()"`** arguments:
 > Required 
   1. workSpaceEnv      = r"C:\user\AutoFolder"   #path to a folder in which a .gdb file is created
   2. Rvt_directory     = r"C:\Users\Berging.rvt" #path to rvt file 
@@ -37,7 +37,7 @@ Moreover, the repository contains a Python script toolbox (geoprocessing toolbox
 > Optional
   6. out_FeatureDataset= r"Building_A"           #default "Building_A"
   7. includeDate       = False                   #Include date of the day in the returned slpk file e.g. (name20202112.slpk)
-#### + Function 2 **"def publishBSLfunction()"** arguments:
+#### + Function 2 **`"def publishBSLfunction()"`** arguments:
 > Required
   1. DirectoryTo_SLPK = None                    # if not provided the script will try derive it from the arguments of function 1 (if provided)
   2. itemID_BSLp  = "itemID"                    # if not provided the program will simply upload the Building Scene Layer Package provided 
