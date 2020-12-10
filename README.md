@@ -9,7 +9,7 @@ Moreover, the repository contains a Python script toolbox (geoprocessing toolbox
 1. This file **README.md**
 2. LICENCE
     #### Files for automating a standalone script
-3. A Python file named **BIMpublication** 
+3. A Python file named '**BIMpublication**' 
 4. A (.bat) file named **runPythonScript** #this can be used for automating using [Task Scheduler](https://datatofish.com/python-script-windows-scheduler/)
 5. A txt file named **TimesLog.txt** #this file is used for the helper function **checkDateFunction()**
     #### Files for automating in ArcGIS Pro
