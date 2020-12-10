@@ -172,24 +172,26 @@ def checkDateFunction(Rvt_directory="",directoryToTXTfile=""):
 
 if __name__ == '__main__':
 
-
-	run_CreateBSLpackage  = arcpy.GetParameterAsText(0)
-	if run_CreateBSLpackage == "true":
-		run_CreateBSLpackage = True
+	# converting the string true value into boolean True
+	run_CreateBSLpackage       = arcpy.GetParameterAsText(0)
+	if run_CreateBSLpackage    == "true":
+		run_CreateBSLpackage   = True
 	else:
-		run_CreateBSLpackage = False
+		run_CreateBSLpackage   = False
 	
-	run_publishBSLfunction= arcpy.GetParameterAsText(9)
-	if run_publishBSLfunction == "true":
+
+	run_publishBSLfunction     = arcpy.GetParameterAsText(9)
+	if run_publishBSLfunction  == "true":
 		run_publishBSLfunction = True
 	else:
 		run_publishBSLfunction = False
 
-	checkDateOfRevitFile  = arcpy.GetParameterAsText(13) # only works if you add (TimesLog.txt) file and the directory to it
-	if checkDateOfRevitFile == "true":
-		checkDateOfRevitFile = True
+
+	checkDateOfRevitFile       = arcpy.GetParameterAsText(13) # only works if you add (TimesLog.txt) file and the directory to it
+	if checkDateOfRevitFile    == "true":
+		checkDateOfRevitFile   = True
 	else:
-		checkDateOfRevitFile = False 
+		checkDateOfRevitFile   = False 
 	
 	###########################################################################################################
 	#directry to the text file in which the histoy log is stored and used for the date check of revit files####
@@ -214,7 +216,7 @@ if __name__ == '__main__':
 	# optional
 	########## 
 	out_FeatureDataset= arcpy.GetParameterAsText(6)
-	GDBfolder_name    = arcpy.GetParameterAsText(7) + ".gdb" #default
+	GDBfolder_name    = arcpy.GetParameterAsText(7)  + ".gdb" #default
 	includeDate       = arcpy.GetParameterAsText(8)
 	if includeDate == "true":includeDate = True
 	else:includeDate = False  
@@ -241,8 +243,10 @@ if __name__ == '__main__':
 	"""
 	# Required
 	##########
+	# converting the empty string input to Python None value
 	itemID_BSLp             = arcpy.GetParameterAsText(10)
 	if itemID_BSLp  =="": itemID_BSLp  = None
+
 	itemID_Hosted           = arcpy.GetParameterAsText(11) 
 	if itemID_Hosted=="": itemID_Hosted= None
 
