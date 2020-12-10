@@ -1,8 +1,9 @@
 ##################################################################################################
 #this script can be used to automate the forkflow: from .rvt file to building scene layer package
 #using arcgis.gis and arcpy pachages and tools.  
-#author     : Khaled Alhoz
-#supervisor : Niels van der Vaart 
+#author                 : Khaled Alhoz
+#supervisor             : Niels van der Vaart 
+#date 					: 15-Nov-2020		
 ##################################################################################################
 
 # **importing required Modules**
@@ -193,7 +194,7 @@ if __name__ == '__main__':
 	###########################################################################################################
 	#directry to the text file in which the histoy log is stored and used for the date check of revit files####
 	## see helper function:)
-	directoryToTXTfile    = r"C:\Users\alhoz\Desktop\Automation\FinalPythonCodes\TimesLog.txt" 
+	directoryToTXTfile    = arcpy.GetParameterAsText(14) 
 
 	"""required parameters and Optional parameters for the workflow
 	this workflow is devided into two main parts (here functions)
@@ -244,9 +245,7 @@ if __name__ == '__main__':
 	if itemID_BSLp  =="": itemID_BSLp  = None
 	itemID_Hosted           = arcpy.GetParameterAsText(11) 
 	if itemID_Hosted=="": itemID_Hosted= None
-	# arcpy.AddMessage("itemID_BSLp{}.{}".format(type(itemID_BSLp), itemID_BSLp) )
-	# arcpy.AddMessage("itemID_BSLp{}.{}".format(type(run_publishBSLfunction), run_publishBSLfunction) )
-	# # arcpy.AddMessage("itemID_BSLp", type(run_publishBSLfunction), run_publishBSLfunction )
+
 	# overwrite parameter is importatnt to be set on **True** ##Only change if you know what you are doing##  
 	dictOfPackageLayer      = {"overwrite" : True}
 	DirectoryTo_SLPK        = arcpy.GetParameterAsText(12)
