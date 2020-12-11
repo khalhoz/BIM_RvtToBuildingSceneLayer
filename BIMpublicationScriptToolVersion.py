@@ -1,9 +1,8 @@
 ##################################################################################################
 #this script can be used to automate the forkflow: from .rvt file to building scene layer package
 #using arcgis.gis and arcpy pachages and tools.  
-#author                 : Khaled Alhoz
-#supervisor             : Niels van der Vaart 
-#date 					: 15-Nov-2020		
+#author     : Khaled Alhoz
+#supervisor : Niels van der Vaart 
 ##################################################################################################
 
 # **importing required Modules**
@@ -172,31 +171,29 @@ def checkDateFunction(Rvt_directory="",directoryToTXTfile=""):
 
 if __name__ == '__main__':
 
-	# converting the string true value into boolean True
-	run_CreateBSLpackage       = arcpy.GetParameterAsText(0)
-	if run_CreateBSLpackage    == "true":
-		run_CreateBSLpackage   = True
-	else:
-		run_CreateBSLpackage   = False
-	
 
-	run_publishBSLfunction     = arcpy.GetParameterAsText(9)
-	if run_publishBSLfunction  == "true":
+	run_CreateBSLpackage  = arcpy.GetParameterAsText(0)
+	if run_CreateBSLpackage == "true":
+		run_CreateBSLpackage = True
+	else:
+		run_CreateBSLpackage = False
+	
+	run_publishBSLfunction= arcpy.GetParameterAsText(9)
+	if run_publishBSLfunction == "true":
 		run_publishBSLfunction = True
 	else:
 		run_publishBSLfunction = False
 
-
-	checkDateOfRevitFile       = arcpy.GetParameterAsText(13) # only works if you add (TimesLog.txt) file and the directory to it
-	if checkDateOfRevitFile    == "true":
-		checkDateOfRevitFile   = True
+	checkDateOfRevitFile  = arcpy.GetParameterAsText(13) # only works if you add (TimesLog.txt) file and the directory to it
+	if checkDateOfRevitFile == "true":
+		checkDateOfRevitFile = True
 	else:
-		checkDateOfRevitFile   = False 
+		checkDateOfRevitFile = False 
 	
 	###########################################################################################################
 	#directry to the text file in which the histoy log is stored and used for the date check of revit files####
 	## see helper function:)
-	directoryToTXTfile    = arcpy.GetParameterAsText(14) 
+	directoryToTXTfile    = r"C:\Users\alhoz\Desktop\Automation\FinalPythonCodes\TimesLog.txt" 
 
 	"""required parameters and Optional parameters for the workflow
 	this workflow is devided into two main parts (here functions)
@@ -216,7 +213,7 @@ if __name__ == '__main__':
 	# optional
 	########## 
 	out_FeatureDataset= arcpy.GetParameterAsText(6)
-	GDBfolder_name    = arcpy.GetParameterAsText(7)  + ".gdb" #default
+	GDBfolder_name    = arcpy.GetParameterAsText(7) + ".gdb" #default
 	includeDate       = arcpy.GetParameterAsText(8)
 	if includeDate == "true":includeDate = True
 	else:includeDate = False  
@@ -243,13 +240,13 @@ if __name__ == '__main__':
 	"""
 	# Required
 	##########
-	# converting the empty string input to Python None value
 	itemID_BSLp             = arcpy.GetParameterAsText(10)
 	if itemID_BSLp  =="": itemID_BSLp  = None
-
 	itemID_Hosted           = arcpy.GetParameterAsText(11) 
 	if itemID_Hosted=="": itemID_Hosted= None
-
+	# arcpy.AddMessage("itemID_BSLp{}.{}".format(type(itemID_BSLp), itemID_BSLp) )
+	# arcpy.AddMessage("itemID_BSLp{}.{}".format(type(run_publishBSLfunction), run_publishBSLfunction) )
+	# # arcpy.AddMessage("itemID_BSLp", type(run_publishBSLfunction), run_publishBSLfunction )
 	# overwrite parameter is importatnt to be set on **True** ##Only change if you know what you are doing##  
 	dictOfPackageLayer      = {"overwrite" : True}
 	DirectoryTo_SLPK        = arcpy.GetParameterAsText(12)
