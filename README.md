@@ -48,7 +48,7 @@ Moreover, the repository contains a Python script toolbox (geoprocessing toolbox
   **overwrite** parameter is importatnt to be set on **True** ##Only change if you know what you are doing; [here](https://developers.arcgis.com/python/api-reference/arcgis.gis.toc.html#arcgis.gis.ContentManager.add) you can find full explaination on the values that can be used##
   This dictionary can be used to update the Building Scene Layer Pckage/Scene Layer (Hosted) item_properties details/information such as title, tags etc. However, it is advised to use [**Update()**](https://developers.arcgis.com/python/api-reference/arcgis.gis.toc.html#arcgis.gis.ContentManager.add) method as it performs faster after publishing. 
 
-### example of using the function in Python
+### example of using the functions in Python
 
 ```
 import BIMpublication
