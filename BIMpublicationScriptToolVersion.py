@@ -194,7 +194,7 @@ if __name__ == '__main__':
 	###########################################################################################################
 	#directry to the text file in which the histoy log is stored and used for the date check of revit files####
 	## see helper function:)
-	directoryToTXTfile    = r"C:\Users\alhoz\Desktop\Automation\FinalPythonCodes\TimesLog.txt" 
+	directoryToTXTfile    = arcpy.GetParameterAsText(14) 
 
 	"""required parameters and Optional parameters for the workflow
 	this workflow is devided into two main parts (here functions)
