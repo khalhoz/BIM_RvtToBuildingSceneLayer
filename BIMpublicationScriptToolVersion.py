@@ -1,8 +1,9 @@
 ##################################################################################################
 #this script can be used to automate the forkflow: from .rvt file to building scene layer package
 #using arcgis.gis and arcpy pachages and tools.  
-#author     : Khaled Alhoz
-#supervisor : Niels van der Vaart 
+#author        : Khaled Alhoz
+#supervisor    : Niels van der Vaart 
+#dateOfcreation: 15-Nov-2020
 ##################################################################################################
 
 # **importing required Modules**

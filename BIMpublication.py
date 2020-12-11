@@ -1,9 +1,9 @@
 ##################################################################################################
 #this script can be used to automate the forkflow: from .rvt file to building scene layer package
 #using arcgis.gis and arcpy pachages and tools.  
-#author     : Khaled Alhoz
-#supervisor : Niels van der Vaart
-#date 					: 15-Nov-2020	 
+#author        : Khaled Alhoz
+#supervisor    : Niels van der Vaart
+#dateOfcreation: 15-Nov-2020	 
 ##################################################################################################
 
 # **importing required Modules**
@@ -225,8 +225,8 @@ if __name__ == '__main__':
 	"""
 	# Required
 	##########
-	itemID_BSLp             = None 
-	itemID_Hosted           = None
+	itemID_BSLp             = None #example "2d2c29a8ff544db5a6df94d936430bd6"
+	itemID_Hosted           = None #example "2d2c29a8ff544db5a6df94d936430bd6"
 	# overwrite parameter is importatnt to be set on **True** ##Only change if you know what you are doing##  
 	dictOfPackageLayer      = {"overwrite" : True}
 	DirectoryTo_SLPK        = None
