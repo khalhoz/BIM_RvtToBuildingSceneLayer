@@ -15,6 +15,7 @@ Moreover, the repository contains a Python script toolbox (geoprocessing toolbox
     #### Files for automating in ArcGIS Pro
 6. A toolbox named `BIMpublicationToolbox` #this toolbox (the script is embedded) can be used directly in ArcGIS Pro and it runs the exact workflow mentioned above. 
 7. A Python file named `BIMpublicationScriptToolVerssion` #this script is a copy of BIMpublication.py, however it is adjusted to be read by the toolbox. This file can be used to develop the Geoprocessing tool to fit your workflow if you wish to.
+8. Internship report.PDF 
 
 ### **workflow:**
 + Check if a revit file has been modifed since the last run #optional: using helper function
